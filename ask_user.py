@@ -15,22 +15,30 @@ dialogue = {"how are you?" : "fine, tnks", "what's your name?" : "jenechka", "wh
 def get_answer():
 
     dialogue = {"how are you?" : "fine, tnks", "what's your name?" : "jenechka", "where are you from?" : "Russia"}
-    print ("ask something simple ")
-    statement = input().lower()
-    while statement != "bye":
-        
+    
+    
+
+    while True:
+
         try:
-            print(dialogue [statement.lower()])
             print ("ask something simple ")
-        except KeyError:
-            print ("that's complicated, ask something simple ")
-        
-        
-        statement = input().lower()
-        
+            statement = input().lower()
+        except KeyboardInterrupt:
+            print ("uh-uh, that isn't working")
+            statement = None
+
         if statement == "bye":
             print("see you!")
             break
+            
+        try:
+            if statement is not None:
+                print(dialogue [statement.lower()])
+                """print ("ask something simple ")"""
+        except KeyError:
+            print ("that's complicated")
+        
+        
     
 
 
@@ -43,9 +51,9 @@ def dialogue():
     except KeyboardInterrupt:
         print ("uh-uh, that isn't working")
         ask_user()
-    try:
+    """try:
         get_answer()
     except KeyboardInterrupt:
-        print ("uh-uh, that isn't working")
-        get_answer()
+        print ("uh-uh, that isn't working")"""
+    get_answer()
 dialogue()
